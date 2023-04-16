@@ -1,0 +1,65 @@
+{
+  "categories": [
+    {
+      "name": "Technology",
+      "subcategories": [
+        "Mobiles",
+        "Tablets",
+        "Laptops",
+        "Wearables",
+        "Apps",
+        "Cryptocurrency",
+        "Audio",
+        "Cameras"
+      ]
+    },
+    {
+      "name": "Hubs",
+      "subcategories": [
+        "Microsoft-Hub",
+        "Nokia-Hub",
+        "Samsung-Hub",
+        "Google-Hub",
+        "Sony-Hub",
+        "Android-Hub",
+        "Apple-Hub"
+      ]
+    },
+    {
+      "name": "News",
+      "subcategories": [
+        "Breaking News",
+        "360 Daily"
+      ]
+    },
+    {
+      "name": "Smart Home & Appliances",
+      "subcategories": [
+        "Home Entertainment",
+        "Home Appliances",
+        "Smart Home"
+      ]
+    },
+    {
+      "name": "Lifestyle & Leisure",
+      "subcategories": [
+        "Opinion",
+        "Photos",
+        "Videos",
+        "Entertainment",
+        "Internet",
+        "Gaming",
+        "Science",
+        "How to"
+      ]
+    },
+    {
+      "name": "Others",
+      "subcategories": [
+        "Podcasts",
+        "Contests",
+        "Culture"
+      ]
+    }
+  ]
+}
