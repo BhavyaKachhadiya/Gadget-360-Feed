@@ -25,7 +25,7 @@ fetch('/function/catgory/category.json')
     const subLi = document.createElement('li');
     const subA = document.createElement('a');
     // console.log(category.name)
-    subA.href = `/pages/category/${category.name.toLowerCase()}/${subcategory.toLowerCase()}/`;
+    subA.href = `/pages/category/${category.name}/${subcategory}/`;
     subA.className = 'dropdown-item';
     subA.innerText = subcategory;
     subLi.appendChild(subA);
