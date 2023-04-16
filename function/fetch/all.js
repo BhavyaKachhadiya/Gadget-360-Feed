@@ -45,7 +45,7 @@ function createCard(title, description, category, link) {
 
   return card;
 }
-let subcategories = ['Mobiles', 'Tablets', 'Laptops', 'Wearables', 'Apps', 'Cryptocurrency', 'Audio', 'Cameras', 'Microsoft', 'Nokia', 'Samsung', 'Google', 'Sony', 'Android', 'Apple', 'Breaking-News', '360Daily', 'Home Entertainment', 'Home-Appliances', 'Smart-Home', 'Opinion', 'Photos', 'Videos', 'Entertainment', 'Internet', 'Gaming', 'Science', 'How-to', 'Podcasts', 'Contests', 'Culture'];
+let subcategories = ['Mobiles', 'Tablets', 'Laptops', 'Wearables', 'Apps', 'Cryptocurrency', 'Audio', 'Cameras', 'Microsoft', 'Nokia', 'Samsung', 'Google', 'Sony', 'Android', 'Apple', 'Breaking-News', '360Daily', 'tv', 'Home-Appliances', 'Smart-Home', '', 'Photos', 'Videos', 'Entertainment', 'Internet', 'Gaming', 'Science', 'How-to', 'Podcasts', 'Contests', 'Culture'];
 
 let lowercaseSubcategories = subcategories.map(category => category.toLowerCase());
 
@@ -105,6 +105,92 @@ function fetchSubcategories(index) {
       
       // Fetch the next subcategory
       fetchSubcategories(index + 1);
+    })
+    .catch(error => console.error(error));
+}
+
+
+
+
+function createCard2(title, description, category, link) {
+  var card = document.createElement('div');
+  card.className = "col-lg-4 col-md-6 mb-4";
+
+  var innerCard = document.createElement('div');
+  innerCard.className = 'card my-3';
+  card.appendChild(innerCard);
+
+  var cardBody = document.createElement('div');
+  cardBody.className = 'card-body';
+  innerCard.appendChild(cardBody);
+
+  var cardTitle = document.createElement('h5');
+  cardTitle.className = 'card-title';
+  cardTitle.textContent = title;
+  cardBody.appendChild(cardTitle);
+
+  var cardText = document.createElement('p');
+  cardText.className = 'card-text';
+  if (description.split(" ").length > 20) {
+    description = description.split(" ").splice(0, 20).join(" ") + "...";
+  }
+  cardText.textContent = description;
+  cardBody.appendChild(cardText);
+
+  var cardBody = document.createElement('div');
+  cardBody.className = 'card-body justify-content-between d-flex align-items-center';
+  innerCard.appendChild(cardBody);
+
+  var badge = document.createElement('span');
+  badge.className = 'badge badge-primary category-' + category.toLowerCase();
+  badge.innerHTML = '<a href="pages/category/'+category+'">' ;
+  badge.textContent = category;
+  cardBody.appendChild(badge);
+
+  var spacer = document.createElement('div');
+  spacer.style.height = '10px'; // adjust as needed
+  cardBody.appendChild(spacer);
+
+  var linkButton = document.createElement('a');
+  linkButton.className = 'btn btn-primary';
+  linkButton.href = link;
+  linkButton.textContent = 'Read More';
+  cardBody.appendChild(linkButton);
+
+  return card;
+}
+let subcategories2 = ['Photos','Opinion','Videos','Podcasts'];
+
+let lowercaseSubcategories2 = subcategories2.map(category => category.toLowerCase());
+
+// Start fetching the first subcategory
+fetchSubcategories2(0);
+fetchSubcategories2(1);
+fetchSubcategories2(2);
+fetchSubcategories2(3);
+function fetchSubcategories2(index) {
+  // Stop fetching if we've reached the end of the subcategories array
+  if (index >= lowercaseSubcategories2.length) {
+    return;
+  }
+  
+  let category2 = lowercaseSubcategories2[index];
+  let fetchURL2 = `https://rss-to-json-serverless-api.vercel.app/api?feedURL=https://www.gadgets360.com/rss/${category2}`
+  console.log(fetchURL2)
+  fetch(fetchURL2)
+    .then(response => response.json())
+    .then(data => {
+      let items = data.items.splice(0,9)
+      let id2 = subcategories2[index]
+      console.log(id2)
+      const newsRow = document.getElementById(id2);
+      items.forEach(item => {
+        const card = createCard(item.title, item.description, item.category, item.link);
+        newsRow.appendChild(card);
+      });
+      
+      // Fetch the next subcategory
+      fetchSubcategories2(index + 1);
     })
     .catch(error => console.error(error));
 }
