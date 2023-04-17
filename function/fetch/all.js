@@ -1,6 +1,6 @@
 function createCard(title, description, category, link) {
   var card = document.createElement('div');
-  card.className = "col-lg-4 col-md-6 mb-4";
+  card.className = "col-lg-4 col-md-6 mb-4 col-sm-12";
 
   var innerCard = document.createElement('div');
   innerCard.className = 'card my-3';
